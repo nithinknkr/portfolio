@@ -202,6 +202,15 @@
             overflow: hidden;
         }
 
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0; /* Ensure particles are behind other hero content */
+        }
+
         .hero::before {
             content: '';
             position: absolute;
@@ -1219,8 +1228,107 @@
                 width: 200px;
                 height: 200px;
             }
+            
+            .video-wrapper {
+                width: 95%;
+            }
+            
+            .video-caption h3 {
+                font-size: 1.5rem;
+            }
         }
 
+        /* Video Resume Section */
+        .video-resume {
+            background-color: var(--dark-color);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .video-resume::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(249, 115, 22, 0.1) 0%, rgba(0, 0, 0, 0) 70%);
+            pointer-events: none;
+        }
+        
+        .video-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .video-wrapper {
+            position: relative;
+            width: 80%;
+            max-width: 800px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transform-style: preserve-3d;
+            transition: transform 0.5s ease;
+        }
+        
+        .video-wrapper:hover {
+            transform: translateY(-10px) rotateX(3deg);
+        }
+        
+        .resume-video {
+            width: 100%;
+            border-radius: 15px;
+            display: block;
+            z-index: 1;
+            position: relative;
+        }
+        
+        .glow-effect {
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: -20px;
+            bottom: -20px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            z-index: 0;
+            filter: blur(30px);
+            opacity: 0.5;
+            border-radius: 20px;
+            animation: glowPulse 3s infinite alternate;
+        }
+        
+        @keyframes glowPulse {
+            0% {
+                opacity: 0.3;
+                filter: blur(20px);
+            }
+            100% {
+                opacity: 0.7;
+                filter: blur(40px);
+            }
+        }
+        
+        .video-caption {
+            text-align: center;
+            max-width: 600px;
+        }
+        
+        .video-caption h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--white);
+            font-weight: 600;
+        }
+        
+        .video-caption p {
+            color: var(--text-color);
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+        
         /* Animations */
         @keyframes fadeInUp {
             from {
@@ -1263,6 +1371,7 @@
                 <li><a href="#education">Education</a></li>
                 <li><a href="#certifications">Certifications</a></li>
                 <li><a href="#achievements">Achievements</a></li>
+                <li><a href="#video-resume">Video Resume</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
@@ -1271,6 +1380,7 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
+        <div id="particles-js"></div> <!-- Add this line -->
         <div class="container">
             <div class="hero-content">
                 <p class="hero-greeting">Hello, I'm</p>
@@ -1316,7 +1426,7 @@
                         expand my expertise and build technology that creates real change.</p>
                     <div class="about-buttons">
                         <a href="#contact" class="btn">Get In Touch</a>
-                        <a href="assests/KonudulaNithin_Resume.pdf" class="btn btn-outline" download>Download CV</a>
+                        <a href="assests\KonudulaNithin_Resume (2).pdf" class="btn btn-outline" target="_blank">View Resume</a>
                     </div>
                 </div>
             </div>
@@ -1568,6 +1678,26 @@
         </div>
     </section>
 
+    <!-- Video Resume Section -->
+    <section id="video-resume" class="video-resume">
+        <div class="container">
+            <h2 class="section-title">Video Resume</h2>
+            <div class="video-container">
+                <div class="video-wrapper" data-aos="fade-up">
+                    <div class="glow-effect"></div>
+                    <video class="resume-video" controls poster="assests/video-thumbnail.jpg">
+                        <source src="assests\WIN_20250526_20_22_05_Pro.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="video-caption" data-aos="fade-up" data-aos-delay="100">
+                    <h3>Learn More About Me</h3>
+                    <p>Watch my video resume to learn more about my skills, experience, and passion for technology. I discuss my projects, technical expertise, and career goals in this brief introduction.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
@@ -1653,6 +1783,7 @@
                         <li><a href="#about"><i class="fas fa-chevron-right"></i> About</a></li>
                         <li><a href="#skills"><i class="fas fa-chevron-right"></i> Skills</a></li>
                         <li><a href="#projects"><i class="fas fa-chevron-right"></i> Projects</a></li>
+                        <li><a href="#video-resume"><i class="fas fa-chevron-right"></i> Video Resume</a></li>
                         <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
                     </ul>
                 </div>
@@ -1662,8 +1793,8 @@
                         <li><a href="#education"><i class="fas fa-chevron-right"></i> Education</a></li>
                         <li><a href="#certifications"><i class="fas fa-chevron-right"></i> Certifications</a></li>
                         <li><a href="#achievements"><i class="fas fa-chevron-right"></i> Achievements</a></li>
-                        <li><a href="assests/KonudulaNithin_Resume.pdf" download><i class="fas fa-chevron-right"></i>
-                                Download CV</a></li>
+                        <li><a href="assests\KonudulaNithin_Resume (2).pdf" target="_blank"><i class="fas fa-chevron-right"></i>
+                                View Resume</a></li>
                     </ul>
                 </div>
             </div>
@@ -1681,6 +1812,7 @@
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script> <!-- Add this line -->
     <script>
         // Initialize AOS
         AOS.init({
@@ -1690,13 +1822,124 @@
             mirror: false
         });
 
-        // Typed.js for Hero Subtitle
-        const typed = new Typed('.typed-text', {
-            strings: ['AI/ML Enthusiast' , 'Web Development Enthusiast'],
-            typeSpeed: 50,
-            backSpeed: 30,
-            backDelay: 2000,
-            loop: true
+        // Typed.js Initialization (existing code)
+        if (document.querySelector('.typed-text')) {
+            var typed = new Typed('.typed-text', {
+                strings: ["Full Stack Developer", "MERN Stack Enthusiast", "AI/ML Learner"],
+                typeSpeed: 70,
+                backSpeed: 50,
+                loop: true,
+                showCursor: true,
+                cursorChar: '_',
+                smartBackspace: true
+            });
+        }
+
+        // Particles.js Initialization (New Code)
+        particlesJS("particles-js", {
+            "particles": {
+                "number": {
+                    "value": 80,
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "color": {
+                    "value": "#ffffff"
+                },
+                "shape": {
+                    "type": "circle",
+                    "stroke": {
+                        "width": 0,
+                        "color": "#000000"
+                    },
+                    "polygon": {
+                        "nb_sides": 5
+                    }
+                },
+                "opacity": {
+                    "value": 0.5,
+                    "random": false,
+                    "anim": {
+                        "enable": false,
+                        "speed": 1,
+                        "opacity_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "size": {
+                    "value": 3,
+                    "random": true,
+                    "anim": {
+                        "enable": false,
+                        "speed": 40,
+                        "size_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#ffffff",
+                    "opacity": 0.4,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 6,
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false,
+                    "attract": {
+                        "enable": false,
+                        "rotateX": 600,
+                        "rotateY": 1200
+                    }
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "repulse"
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push"
+                    },
+                    "resize": true
+                },
+                "modes": {
+                    "grab": {
+                        "distance": 400,
+                        "line_linked": {
+                            "opacity": 1
+                        }
+                    },
+                    "bubble": {
+                        "distance": 400,
+                        "size": 40,
+                        "duration": 2,
+                        "opacity": 8,
+                        "speed": 3
+                    },
+                    "repulse": {
+                        "distance": 200,
+                        "duration": 0.4
+                    },
+                    "push": {
+                        "particles_nb": 4
+                    },
+                    "remove": {
+                        "particles_nb": 2
+                    }
+                }
+            },
+            "retina_detect": true
         });
 
         // Navbar Scroll Effect
